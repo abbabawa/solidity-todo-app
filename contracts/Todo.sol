@@ -10,7 +10,9 @@ contract Todo {
     mapping(address=>todoItem[]) todos;
 
     function addTodo(string memory todo) public  {
-        todos[msg.sender].push(todoItem({id: todos[msg.sender].length, todo: todo}));
+        uint count = todos[msg.sender].length; 
+        todos[msg.sender].push(todoItem({id: count, todo: todo}));
+        
     }
 
     function getTodos() public view returns(todoItem[] memory){

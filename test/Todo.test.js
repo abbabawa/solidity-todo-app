@@ -8,13 +8,17 @@ contract('Todo', (accounts) => {
     
       it('It should add a todo item', async () => {
         const addedTodo = await todo.addTodo("Take my bathe") 
-        assert.equal(addedTodo, 1)
+        let todos = await todo.getTodos.call();console.log(todos, typeof todos);
+        assert.equal(todos.length, 1)
       })
 
-    //   it('It should set hero to Iron Man',async()=>{
-    //       await hero.setHero("Iron Man",{from:accounts[0]})
-    //       const receivedHero = await hero.getHero()
-    //       assert.equal(receivedHero,"Iron Man")
-    //   })
+      it('It should get a users todos',async()=>{
+        let todos = await todo.getTodos.call();
+        assert.equal(todos.length, 1)
+
+        const addedTodo = await todo.addTodo("brush my teeth") 
+        todos = await todo.getTodos.call();console.log(todos, typeof todos);
+        assert.equal(todos.length, 2)
+      })
       
 });
