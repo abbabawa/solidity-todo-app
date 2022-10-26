@@ -28,4 +28,17 @@ contract Todo {
         item.done = done;
         item.todo = todo;
     }
+
+    function deleteTodo(uint id) public {
+        require(id < todos[msg.sender].length && id >= 0, 'The id provided is out of range');
+
+        for(uint i = id; i < todos[msg.sender].length - 1; i++) {
+            todos[msg.sender][i] = todos[msg.sender][i+1];
+        }
+        todos[msg.sender].pop();
+    }
+
+    function clearTodos() public {
+        delete todos[msg.sender];
+    }
 }
