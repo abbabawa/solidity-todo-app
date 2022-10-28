@@ -26,7 +26,7 @@ contract Todo {
         todoItem storage item = todos[msg.sender][id];
         // todos[msg.sender][id] = todoItem({id: id, todo: todo, done: done});
         item.done = done;
-        item.todo = todo;
+        item.todo = todo; 
     }
 
     function deleteTodo(uint id) public {
