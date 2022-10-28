@@ -25,7 +25,7 @@ contract Todo {
         
         todoItem storage item = todos[msg.sender][id];
         // todos[msg.sender][id] = todoItem({id: id, todo: todo, done: done});
-        item.done = done;
+        item.done = done; 
         item.todo = todo;   
     }
 
@@ -38,7 +38,7 @@ contract Todo {
         todos[msg.sender].pop();
     }
 
-    function clearTodos() public {
+    function clearTodos() public { 
         delete todos[msg.sender];
     }
 }
